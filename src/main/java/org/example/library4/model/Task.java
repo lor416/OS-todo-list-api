@@ -1,6 +1,12 @@
 package org.example.library4.model;
 
+import jakarta.persistence.*;
+
+@Entity // Говорит, что это таблица
+@Table(name = "tasks")
 public class Task {
+    @Id // Это первичный ключ
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Авто-инкремент в БД
     private Integer id; // ЗАМЕНИ int НА Integer
     private String title;
     private String description;

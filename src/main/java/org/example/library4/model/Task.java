@@ -1,14 +1,20 @@
 package org.example.library4.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-@Entity // Говорит, что это таблица
+@Entity
 @Table(name = "tasks")
 public class Task {
-    @Id // Это первичный ключ
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Авто-инкремент в БД
-    private Integer id; // ЗАМЕНИ int НА Integer
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank(message = "Заголовок не может быть пустым")
+    @Size(max = 100, message = "Заголовок слишком длинный")
     private String title;
+
     private String description;
     private String status;
 

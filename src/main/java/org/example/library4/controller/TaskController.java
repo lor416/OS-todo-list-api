@@ -1,5 +1,6 @@
 package org.example.library4.controller;
 
+import jakarta.validation.Valid;
 import org.example.library4.model.Task;
 import org.example.library4.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,9 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) {
         if (task.getStatus() == null) task.setStatus("todo");
-        // Сохраняем в базу. ID база назначит сама автоматически
-        Task savedTask = taskRepository.save(task);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskRepository.save(task));
     }
 
     @PutMapping("/{id}")

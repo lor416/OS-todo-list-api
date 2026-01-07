@@ -18,10 +18,8 @@ public class Task {
     private String description;
     private String status;
 
-    // ОБЯЗАТЕЛЬНО добавь пустой конструктор
     public Task() {}
 
-    // Геттеры и сеттеры
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
